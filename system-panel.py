@@ -7,7 +7,7 @@ PANEL_URL = "https://arzan.official-store.live"  # Ganti dengan URL panel Pterod
 API_KEY = "ptla_C4ozAF4OaFJWESw8FJRipVbEwL9QCCoJvZnZBUGHJdg"        # Ganti dengan API Key Admin
 
 # Daftar user ID yang tidak boleh dihapus
-EXCLUDED_USERS = [1, 2]  # Ganti dengan ID user yang ingin dikecualikan
+EXCLUDED_USERS = [1]  # Ganti dengan ID user yang ingin dikecualikan
 
 # File log (akan dibuat di folder yang sama dengan script)
 LOG_FILE = "system-panel.log"
