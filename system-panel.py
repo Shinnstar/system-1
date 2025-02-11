@@ -1,37 +1,13 @@
 #!/usr/bin/python3
 import requests
 from datetime import datetime
-import os
 
-# Ambil nilai PANEL_URL dan API_KEY dari environment variable,
-# jika tidak ada, minta input dari user.
-PANEL_URL = os.environ.get("PANEL_URL")
-if not PANEL_URL:
-    PANEL_URL = input("Masukkan URL Panel Pterodactyl (contoh: https://your-panel.com): ").strip()
+# Konfigurasi API Pterodactyl
+PANEL_URL = "https://your-panel.com"  # Ganti dengan URL panel Pterodactyl kamu
+API_KEY = "YOUR_ADMIN_API_KEY"        # Ganti dengan API Key Admin
 
-API_KEY = os.environ.get("API_KEY")
-if not API_KEY:
-    API_KEY = input("Masukkan API Key Admin: ").strip()
-
-# Ambil daftar user ID yang dikecualikan dari environment variable
-# (dengan format "1,2,3"), atau minta input jika belum diset.
-excluded_env = os.environ.get("EXCLUDED_USERS")
-if excluded_env:
-    try:
-        EXCLUDED_USERS = [int(x) for x in excluded_env.split(",") if x.strip()]
-    except Exception as e:
-        print("Error memparsing EXCLUDED_USERS dari environment, menggunakan default [1, 2].")
-        EXCLUDED_USERS = [1, 2]
-else:
-    user_input = input("Masukkan daftar user ID yang dikecualikan (pisahkan dengan koma, misal: 1,2). Tekan Enter untuk menggunakan default [1,2]: ").strip()
-    if user_input == "":
-        EXCLUDED_USERS = [1, 2]
-    else:
-        try:
-            EXCLUDED_USERS = [int(x.strip()) for x in user_input.split(",") if x.strip().isdigit()]
-        except Exception as e:
-            print("Input tidak valid, menggunakan default [1, 2].")
-            EXCLUDED_USERS = [1, 2]
+# Daftar user ID yang tidak boleh dihapus
+EXCLUDED_USERS = [1, 2]  # Ganti dengan ID user yang ingin dikecualikan
 
 # File log (akan dibuat di folder yang sama dengan script)
 LOG_FILE = "system-panel.log"
@@ -60,7 +36,7 @@ now = datetime.utcnow()
 for user in users:
     user_id = user["attributes"]["id"]
 
-    # Lewati user yang ada di daftar pengecualian
+    # Lewati user yang dikecualikan
     if user_id in EXCLUDED_USERS:
         log(f"User {user['attributes']['username']} dikecualikan, tidak dihapus.")
         continue
