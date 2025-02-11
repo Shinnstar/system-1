@@ -3,8 +3,8 @@ import requests
 from datetime import datetime
 
 # Konfigurasi API Pterodactyl
-PANEL_URL = "https://your-panel.com"  # Ganti dengan URL panel Pterodactyl kamu
-API_KEY = "YOUR_ADMIN_API_KEY"        # Ganti dengan API Key Admin
+PANEL_URL = "https://arzan.official-store.live"  # Ganti dengan URL panel Pterodactyl kamu
+API_KEY = "ptla_C4ozAF4OaFJWESw8FJRipVbEwL9QCCoJvZnZBUGHJdg"        # Ganti dengan API Key Admin
 
 # Daftar user ID yang tidak boleh dihapus
 EXCLUDED_USERS = [1, 2]  # Ganti dengan ID user yang ingin dikecualikan
